@@ -11,7 +11,7 @@ enum Faculty{ Faculty_of_History, Faculty_of_Law, Faculty_of_Education, Faculty_
 class Person
 {
 public:
-	Person(char* = "", char* = "", long int = 0, char* = "", Faculty = Faculty_of_Law);
+	Person(char* = " ", char* = " ", char[11]= " ", char* = " ", Faculty = Faculty_of_Law);
 	Person(const Person&);
 	Person& operator=(const Person&);
 	bool operator<(const Person&);
@@ -19,28 +19,27 @@ public:
 
 	//friend fstream& operator<<(fstream &ostr, Person &someone);
 
-	virtual void print() const;
+	void print() const;
 
 	const char* get_first_name() const;
 	const char* get_last_name() const;
 	const char* get_address() const;
 	Faculty get_faculty() const;
-	long int get_ucn() const;
+	const char* get_ucn() const;
 
 	void set_first_name(const char*);
 	void set_last_name(const char*);
 	void set_address(const char*);
 	void set_faculty(Faculty);
-	void set_ucn(long int);
+	void set_ucn(const char*);
 
 
-	bool Person::compare_names(Person&, char*, char*);
+	static bool compare_names(Person&, char*, char*);
 
 private:
 	void copyP(const Person&);
 	void deleteP();
-	char *first_name, *last_name, *address;
-	long int ucn;
+	char *first_name, *last_name, *address, *ucn;
 	Faculty faculty;
 
 };
